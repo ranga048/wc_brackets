@@ -610,20 +610,20 @@
     var KNOCKOUT = {
         r32: [
             { id: 73, v: "LA", t1: "A2", t2: "B2" },
-            { id: 74, v: "BOS", t1: "E1", t2: "3rd" },
+            { id: 74, v: "BOS", t1: "E1", t2: "3C" },
             { id: 75, v: "MTY", t1: "F1", t2: "C2" },
             { id: 76, v: "HOU", t1: "C1", t2: "F2" },
-            { id: 77, v: "NYC", t1: "I1", t2: "3rd" },
+            { id: 77, v: "NYC", t1: "I1", t2: "3D" },
             { id: 78, v: "DAL", t1: "E2", t2: "I2" },
-            { id: 79, v: "MEX", t1: "A1", t2: "3rd" },
-            { id: 80, v: "ATL", t1: "L1", t2: "3rd" },
-            { id: 81, v: "SF", t1: "D1", t2: "3rd" },
-            { id: 82, v: "SEA", t1: "G1", t2: "3rd" },
+            { id: 79, v: "MEX", t1: "A1", t2: "3B" },
+            { id: 80, v: "ATL", t1: "L1", t2: "3A" },
+            { id: 81, v: "SF", t1: "D1", t2: "3E" },
+            { id: 82, v: "SEA", t1: "G1", t2: "3F" },
             { id: 83, v: "TOR", t1: "K2", t2: "L2" },
             { id: 84, v: "LA", t1: "H1", t2: "J2" },
-            { id: 85, v: "VAN", t1: "B1", t2: "3rd" },
+            { id: 85, v: "VAN", t1: "B1", t2: "3G" },
             { id: 86, v: "MIA", t1: "J1", t2: "H2" },
-            { id: 87, v: "KC", t1: "K1", t2: "3rd" },
+            { id: 87, v: "KC", t1: "K1", t2: "3H" },
             { id: 88, v: "DAL", t1: "D2", t2: "G2" }
         ],
         r16: [
@@ -699,10 +699,10 @@
             return getTeamByPos(src.charAt(0), parseInt(src.charAt(1), 10));
         }
 
-        // 3rd place
-        if (src === "3rd") {
-            var thirds = get3rdTeams();
-            return thirds.length > 0 ? thirds[0].team : null;
+        // 3rd place from specific group (format: 3A, 3B, etc.)
+        if (/^3[A-L]$/.test(src)) {
+            var group = src.charAt(1);
+            return getTeamByPos(group, 3);
         }
 
         // Winner of match
